@@ -1,2 +1,3 @@
-# MyProgect
-# my first git project 1
+# MyProject to git
+# Hello Word!
+
