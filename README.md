@@ -1,7 +1,3 @@
-# MyProject to git
-# Hello Word!
-
-
 # 过滤并计算行数
 Sub Filter_MoreCriteria()
 
