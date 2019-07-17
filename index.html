@@ -1,28 +1,164 @@
 <!DOCTYPE html>
 <html>
+
 <head>
-<meta charset="utf-8">
-<script src="../MyProject/js/angular.min.js"></script>
+    <meta charset="utf-8">
+    <script src="../MyProject/js/angular.min.js"></script>
 </head>
 
 
 <body>
- 
-<div ng-app="myApp" ng-controoler="costCtrl">
-    数量: <input type="number" ng-model="quantity">
-    价格: <input type="number" ng-model="price">
-    
-    <p>总价 = {{ (quantity * price) | currency }}</p>
 
-</div>
-    
+    <!-- 1) -->
+    <!-- <div ng-app="myApp" ng-controoler="costCtrl">
+        数量: <input type="number" ng-model="quantity">
+        价格: <input type="number" ng-model="price">
+
+        <p>总价 = {{ (quantity * price) | currency }}</p>
+
+    </div> 
     <script>
-    var app = angular.module('myApp', []);
-    app.controller('costCtrl', function($scope) {
-        $scope.quantity = 1;
-        $scope.price = 9.99;
-    });
-</script>
+        var app = angular.module('myApp', []);
+        app.controller('costCtrl', function ($scope) {
+            $scope.quantity = 1;
+            $scope.price = 9.99;
+        });
+    </script>-->
+
+    <!-- 2） -->
+    <!-- <div ng-app="myApp" ng-controoler=“myCtrl”>
+        <p>当前页面的URL：</p>
+        <h3>{{myUrl}}</h3>
+    </div> 
+    <script>
+        var app = angular.module('myApp', []);
+        app.controller('myCtrl', function ($scope, $loaction) {
+            $scope.myUrl = $loaction.absUrl();
+            $scope.myUrl = $loaction.path();
+        });
+    </script>-->
+
+    <!-- 3） -->
+    <!-- <div ng-app="myApp" ng-controller="myCtrl">
+
+        <ul>
+            <li ng-repeat="x in names">
+                {{ x.Name + ', ' + x.Country }}
+            </li>
+        </ul>
+
+    </div> 
+    <script>
+        var app = angular.module('myApp', []);
+        app.controller('myCtrl', function ($scope, $http) {
+            $http({
+                method: 'GET',
+                url: 'https://www.runoob.com/try/angularjs/data/sites.php'
+            }).then(function successCallback(response) {
+                $scope.names = response.data.sites;
+            }, function errorCallback(response) {
+                // 请求失败执行代码
+            });
+        });
+    </script>-->
+
+    <!-- 4) -->
+    <!-- <div ng-app="myApp" ng-controller="myCtrl">
+
+        <p>两秒后显示信息:</p>
+
+        <h1>{{myHeader}}</h1>
+
+    </div> 
+    <script>
+        var app = angular.module('myApp', []);
+        app.controller('myCtrl', function ($scope, $timeout) {
+            $scope.myHeader = "Hello World!";
+            $timeout(function () {
+                $scope.myHeader = "How are you today?";
+            }, 2000); //毫秒
+        });
+    </script>-->
+
+    <!-- 5) -->
+    <!-- <div ng-app="myApp" ng-controller="myCtrl">
+
+        <p>现在时间是:</p>
+
+        <h1>{{theTime}}</h1>
+
+    </div> 
+    <script>
+        var app = angular.module('myApp', []);
+        app.controller('myCtrl', function ($scope, $interval) {
+            $scope.theTime = new Date().toLocaleTimeString();
+            $interval(function () {
+                $scope.theTime = new Date().toLocaleTimeString();
+            }, 1000);
+        });
+    </script>-->
+
+    <!-- 6) -->
+    <!-- <div ng-app="myApp" ng-controller="myCtrl">
+
+        <p>255 的16进制是:</p>
+
+        <h1>{{hex}}</h1>
+
+    </div>  
+    <script>
+        var app = angular.module('myApp', []);
+        app.service('hexafy', function () {
+            this.myFunc = function (x) {
+                return x.toString(16);
+            }
+        });
+        app.controller('myCtrl', function ($scope, hexafy) {
+            $scope.hex = hexafy.myFunc(255);
+        });
+
+    </script>-->
+
+    <!-- 7) -->
+    <!-- <div ng-app="myApp" ng-controller="myCtrl">
+        <p>在获取数组 [255, 251, 200] 值时使用过滤器:</p>
+        <ul>
+            <li ng-repeat="x in counts">{{x | myFormat}}</li>
+        </ul>
+    </div>
+    <script>
+        var app = angular.module('myApp', []);
+        app.service('hexafy', function () {
+            this.myFunc = function (x) {
+                return x.toString(16);
+            }
+        });
+        app.filter('myFormat', ['hexafy', function (hexafy) {
+
+            return function (x) {
+                return hexafy.myFunc(x);
+            }
+        }]);
+        app.controller('myCtrl', function ($scope) {
+            $scope.counts = [255, 251, 200];
+        });
+    </script> -->
+
+    <!-- 8) -->
+    <!-- <div ng-app="myApp" ng-controller="myCtrl">
+
+        <select ng-init="selectedName = names[0]" ng-model="selectedName" ng-options="x for x in names">
+        </select>
+
+    </div>
+
+    <script>
+        var app = angular.module('myApp', []);
+        app.controller('myCtrl', function ($scope) {
+            $scope.names = ["Google", "Runoob", "Taobao"];
+        });
+    </script> -->
 
 </body>
+
 </html>
